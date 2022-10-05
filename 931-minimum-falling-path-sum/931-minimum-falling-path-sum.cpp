@@ -31,9 +31,10 @@ public:
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int n = matrix.size();
         int ans = INT_MAX;
+        vector<vector<int>> dp (n, vector<int>(n,-1));
         for(int j= 0;j<n;j++){
-            vector<vector<int>> dp (n, vector<int>(n,-1));
-            /*becoz there are variabel starting point so we have to compute for each stating point in the 1st row therefore we are calling recursion for each element of 1st row*/
+            
+        /*becoz there are variabel starting point so we have to compute for each stating point in the 1st row therefore we are calling recursion for each element of 1st row*/
             int currans = f(0,j,matrix,n,dp);
             if(currans < ans) ans = currans;
         }
