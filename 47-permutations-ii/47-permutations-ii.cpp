@@ -1,38 +1,24 @@
 class Solution {
-public:
-    
-    void f(int ind,int n,  vector<int>& nums, vector<vector<int>> &ans ){
-        
-        if( ind >= n){
-            
-            for(int i = 0;i<ans.size();i++){
-                if(ans[i]==nums)
-                    return;
-            }
-            
+private:
+     void solution(vector<int> nums,int index,vector<vector<int>>& ans){
+        if(index==nums.size()){
             ans.push_back(nums);
             return;
-            
         }
-        
-        
-        for(int i = ind; i<n;i++){
-            swap(nums[ind], nums[i]);
-            f(ind+1, n,nums,ans);
-            swap(nums[ind], nums[i]);
-        }
-        
-        
-    }
-    
+        unordered_set<int> st;
+       for(int j=index;j<nums.size();j++){
+           if(st.find(nums[j])!=st.end()) continue;
+           st.insert(nums[j]);
+           swap(nums[index],nums[j]);
+           solution(nums,index+1,ans);
+           swap(nums[index],nums[j]);
+       }
+     }
+public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        
-        
-        int n = nums.size();
         vector<vector<int>> ans;
-        
-        f(0, n, nums, ans);
-        return ans;
-        
+        int index=0;
+        solution(nums,index,ans);
+        return ans;        
     }
 };
