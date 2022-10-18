@@ -14,7 +14,6 @@ public:
                 ch = '1';
             }
         }
-        // cout<<ans<<endl;
         return f(n-1,ans);
     }
     
