@@ -1,18 +1,22 @@
 // class Solution {
 // public:
 //     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-//         vector<vector<int>> paths;
+//         vector<vector<int>> ans;
         
 //         queue<int> q;
 //         q.push(0);
+//         vector<int> path;
         
 //         while(!q.empty()){
-            
 //             int node = q.front();
+//             path.push_back(node);
 //             q.pop();
             
 //             for(auto it : graph[node]){
-                
+//                 if(it == graph.size()){
+//                     path.push(it);
+//                     ans.push(path);
+//                 }
 //             }
             
 //         }
