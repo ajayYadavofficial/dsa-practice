@@ -8,7 +8,7 @@ public:
             a[x[1]].push_back(x[0]);
         }
 
-        return dfs(-1, 0, a, hasApple);
+        return dfs(-1, 0, a, hasApple);// parent, node, adjList, applearray
     }
 
     int dfs(int prev, int curr, vector<vector<int>>& a, vector<bool>& hasApple) {
