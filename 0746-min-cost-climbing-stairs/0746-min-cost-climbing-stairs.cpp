@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    
    int minCostClimbingStairs(vector<int>& heights) {
         int n=heights.size();
         
