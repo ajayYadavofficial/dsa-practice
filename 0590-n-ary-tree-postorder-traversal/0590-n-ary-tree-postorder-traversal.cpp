@@ -24,9 +24,8 @@ public:
     vector<int> postorder(Node* root) {
         if(root != NULL){
             // vector<Node*> child = root->children;
-            for(int i=0; i<root->children.size(); i++){
-                Node* node = root->children[i];
-                postorder(node);
+            for(int i=0; i<root->children.size(); i++){ 
+                postorder(root->children[i]);
             }
             res.push_back(root->val);
         }
