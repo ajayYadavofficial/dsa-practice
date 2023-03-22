@@ -11,14 +11,14 @@
  */
 class Solution {
 public:
-    int height(TreeNode* node){
+    int height(TreeNode* node, int &maxi){
         if(node == NULL){
             return 0;
         }
         
-        int leftHeight = height(node->left);
-        int rightHeight = height(node->right);
-        
+        int leftHeight = height(node->left, maxi);
+        int rightHeight = height(node->right, maxi);
+        maxi = max(maxi, (leftHeight+rightHeight));
         return 1 + max(leftHeight, rightHeight);
     }
     
@@ -28,16 +28,17 @@ public:
             return 0;
         }
         
-        // diameter will of either of these:- either in left only, either in right only, either combination of both
+//         // diameter will of either of these:- either in left only, either in right only, either combination of both
         
-        int option1 = diameterOfBinaryTree(root->left); // either in left
+//         int option1 = diameterOfBinaryTree(root->left); // either in left
         
-        int option2 = diameterOfBinaryTree(root->right); // either in right
+//         int option2 = diameterOfBinaryTree(root->right); // either in right
         
-        int option3 = height(root->left) + height(root->right); // either combination of both
+//         int option3 = height(root->left) + height(root->right); // either combination of both
         
-        int ans = max(option1, max(option2, option3));
-        
-        return ans;
+//         int ans = max(option1, max(option2, option3));
+        int maxi = INT_MIN;
+        int ht = height(root,maxi);
+        return maxi;
     }
 };
