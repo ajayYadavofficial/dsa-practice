@@ -16,11 +16,9 @@ public:
         
         if(root == NULL) return 0;
         
-        int left = -1e8, right = -1e8;
+        int left =  helper(root->left);
         
-        left =  helper(root->left);
-        
-        right =  helper(root->right);
+        int right =  helper(root->right);
         
         return 1 + max(left,right);
         
