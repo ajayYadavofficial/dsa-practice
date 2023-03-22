@@ -25,7 +25,7 @@ public:
                 // cout<<*it<<endl;
                 int adjNode = it[0];
                 int dist = it[1];
-                
+                ans = min(ans,dist);
                 if(!visited[adjNode]){
                     visited[adjNode] = true;
                     q.push(adjNode);
@@ -34,16 +34,16 @@ public:
             
         }
         
-        for(auto it : roads){
-            int u = it[0];
-            int v = it[1];
-            int dist = it[2];
+//         for(auto it : roads){
+//             int u = it[0];
+//             int v = it[1];
+//             int dist = it[2];
             
-            if(visited[u] && visited[v]){
-                ans = min(ans,dist);
-            }
+//             if(visited[u] && visited[v]){
+//                 ans = min(ans,dist);
+//             }
             
-        }
+//         }
         return ans;
         
     }
