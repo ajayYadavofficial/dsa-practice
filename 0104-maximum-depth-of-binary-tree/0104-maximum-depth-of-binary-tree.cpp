@@ -18,11 +18,11 @@ public:
         
         int left = -1e8, right = -1e8;
         
-        left = 1 + helper(root->left);
+        left =  helper(root->left);
         
-        right = 1 + helper(root->right);
+        right =  helper(root->right);
         
-        return max(left,right);
+        return 1 + max(left,right);
         
     }
     int maxDepth(TreeNode* root) {
