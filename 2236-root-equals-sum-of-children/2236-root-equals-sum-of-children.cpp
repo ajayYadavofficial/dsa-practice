@@ -15,17 +15,14 @@ public:
     int helper( TreeNode* root ){
         if(root == NULL) return 0;
         if(root->right == NULL && root->left == NULL) return root->val;
-        
         int leftS = helper(root->left);
         int rightS = helper(root->right);
-        
         return leftS + rightS;
         
     }
     
     bool checkTree(TreeNode* root) {
         int s = helper(root);
-        
         return (root->val == s);
     }
 };
