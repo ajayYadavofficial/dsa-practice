@@ -2,8 +2,6 @@ class Solution {
 public:
     
    unordered_map<string,bool> mp;
-    
-    
     bool isScramble(string s1, string s2) {
         
         int n = s1.size();
