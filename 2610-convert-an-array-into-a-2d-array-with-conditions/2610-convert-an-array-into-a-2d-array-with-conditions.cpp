@@ -1,27 +1,20 @@
 class Solution {
 public:
     vector<vector<int>> findMatrix(vector<int>& nums) {
-        vector<vector<int>> ans;
-        vector<unordered_set<int>> seen;
-        int sz=-1;
-        for(int n:nums){
-            bool add=false;
-            int i=0;
-            for(auto& vec:ans){
-                if(vec.size()==0 || seen[i].count(n)==0){ // if the element is not present in current row
-                    vec.push_back(n);
-                    seen[i].insert(n);
-                    add=true;
-                    break;
-                }
-                ++i;
-            }
-            if(!add){ // if it is present in the current 2-D array, create new row and add it  
-                ans.push_back({n});
-                seen.push_back({n});
-                sz++;
-            }
+    vector<vector<int>> res;
+    unordered_map<int, int> cnt;
+    for (auto n : nums)
+        ++cnt[n];
+    while(!cnt.empty()) {
+        res.push_back({});
+        for (auto it = begin(cnt); it != end(cnt); ) {
+            res.back().push_back(it->first);
+            if (--it->second == 0)
+                cnt.erase(it++);
+            else
+                ++it;
         }
-        return ans;
     }
+    return res;
+}
 };
