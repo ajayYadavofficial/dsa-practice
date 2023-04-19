@@ -1,6 +1,6 @@
 # Shortest Path in Weighted undirected graph
 ## Medium
-<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given a weighted undirected graph having <strong>n</strong> vertices and <strong>m</strong> edges describing there are edges between a to b with some weight, find the shortest path between the vertex&nbsp;1&nbsp;and the vertex&nbsp;n and if path does not exist then return a list consisting of only -1.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given a weighted undirected graph having <strong>n+1</strong> vertices numbered from 0 to n&nbsp;and <strong>m</strong> edges describing there are edges between a to b with some weight, find the shortest path between the vertex&nbsp;1&nbsp;and the vertex&nbsp;n and if path does not exist then return a list consisting of only -1.</span></p>
 
 <pre><span style="font-size:18px"><strong>Example:</strong>
 <strong>Input:</strong>
@@ -22,6 +22,6 @@ You don't need to read input or print anything. Your task is to complete the fun
 <p><span style="font-size:18px">Constraint:<br>
 2 &lt;= n&nbsp;&lt;= 10<sup>5</sup><br>
 0 &lt;= m &lt;= 10<sup>5</sup><br>
-1 &lt;= a, b &lt;= n<br>
+0&lt;= a, b &lt;= n<br>
 1 &lt;= w &lt;= 10<sup>5</sup></span></p>
 </div>
