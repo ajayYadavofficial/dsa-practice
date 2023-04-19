@@ -7,7 +7,7 @@ class Solution {
   public:
     vector<int> shortestPath(int n, int m, vector<vector<int>>& edges) {
         // Code here
-        
+                
         vector<vector<int>> adj[n+1];
         
         for(int i=0; i<m;i++){
@@ -73,6 +73,7 @@ class Solution {
         reverse(path.begin(),path.end());
         return path;
         
+
     }
 };
 
