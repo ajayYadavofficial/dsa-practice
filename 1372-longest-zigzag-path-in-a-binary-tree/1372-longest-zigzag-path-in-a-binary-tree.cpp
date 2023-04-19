@@ -39,37 +39,28 @@
 //     }
 // };
 
-
 class Solution {
-    int MAX;
-    unordered_map<TreeNode*, vector<int>> dp;
 public:
+    int res = 0;
+
     int longestZigZag(TreeNode* root) {
-        dp.clear();
-        dfs(root);
-        return MAX;
+        maxZigZag(1, 0, root);
+        maxZigZag(0, 0, root);
+        return res;
     }
 
-    void dfs(TreeNode* root) {
-        if (!root) return;
+    void maxZigZag(int isLeft, int cnt, TreeNode* root) {
+        if(root == NULL) return;
 
-        if (!root->left && !root->right) {
-            dp[root] = {0, 0};
-            return;
+        res = max(res, cnt);
+
+        if(isLeft) {
+            maxZigZag(0, cnt + 1, root->left);
+            maxZigZag(1, 1, root->right);
         }
-
-        dfs(root->left);
-        dfs(root->right);
-
-        int left = 0, right = 0;
-
-        if (dp.find(root->left) != dp.end())
-            left = 1 + dp[root->left][1];
-
-        if (dp.find(root->right) != dp.end())
-            right = 1 + dp[root->right][0];
-
-        dp[root] = {left, right};
-        MAX = max(MAX, max(left, right));
+        else {
+            maxZigZag(1, cnt + 1, root->right);
+            maxZigZag(0, 1, root->left);
+        }
     }
 };
