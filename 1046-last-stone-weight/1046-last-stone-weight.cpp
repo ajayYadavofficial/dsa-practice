@@ -13,7 +13,6 @@ public:
             pq.pop();
             if( x != y) pq.push(y-x);
         }
-        if(!pq.empty()) return pq.top();
-        return 0;
+        return pq.empty() ? 0 : pq.top();
     }
 };
