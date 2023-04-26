@@ -8,10 +8,11 @@ public:
         cout<<freq<<endl;
         map<int,int> mp;
         for(auto it : nums) mp[it] ++;
-        vector<int> vec;
+        // vector<int> vec;
+        nums.clear();
         for(auto it : mp){
-            if(it.second > freq) vec.push_back(it.first);
+            if(it.second > freq) nums.push_back(it.first);
         }
-        return vec;
+        return nums;
     }
 };
