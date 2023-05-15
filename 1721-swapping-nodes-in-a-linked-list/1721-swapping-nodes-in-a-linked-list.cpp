@@ -11,11 +11,10 @@
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
-        ListNode* t1 = head;
-        ListNode* t2 = head;
-        ListNode* t3 = head;
+        ListNode* t1 = head; // mark node from First Kth
+        ListNode* t2 = head;// traversing 
+        ListNode* t3 = head;// marking Node from Last Kth
         
-        // finding From Last
         for(int i=1; i<=k-1; i++){
             t1 = t1->next;
             t2 = t2->next;
