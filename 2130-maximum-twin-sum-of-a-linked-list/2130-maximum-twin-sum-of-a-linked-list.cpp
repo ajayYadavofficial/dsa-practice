@@ -8,20 +8,52 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// class Solution {
+// public:
+//     int pairSum(ListNode* head) {
+//         vector<int> list;
+//         ListNode* temp = head;
+//         while(temp != NULL){
+//             list.push_back(temp->val);
+//             temp = temp->next;
+//         }
+//         int ans = INT_MIN;
+//         for(int i=0; i<list.size()/2; i++){
+//             int sum = list[i] + list[list.size()-1-i];
+//             ans = max(ans,sum);
+//         }
+//         return ans;
+//     }
+// };
+
 class Solution {
-public:
-    int pairSum(ListNode* head) {
-        vector<int> list;
-        ListNode* temp = head;
-        while(temp != NULL){
-            list.push_back(temp->val);
-            temp = temp->next;
+    public:
+     int pairSum(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        int maxVal = 0;
+
+        while(fast && fast -> next)
+        {
+            slow = slow -> next;
+            fast = fast -> next -> next;
         }
-        int ans = INT_MIN;
-        for(int i=0; i<list.size()/2; i++){
-            int sum = list[i] + list[list.size()-1-i];
-            ans = max(ans,sum);
+
+        ListNode *nextNode, *prev = NULL;
+        while (slow) {
+            nextNode = slow->next;
+            slow->next = prev;
+            prev = slow;
+            slow = nextNode;
         }
-        return ans;
+
+        while(prev)
+        {
+            maxVal = max(maxVal, head -> val + prev -> val);
+            prev = prev -> next;
+            head = head -> next;
+        }
+
+        return maxVal;
     }
 };
