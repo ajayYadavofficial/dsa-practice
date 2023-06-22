@@ -1,19 +1,23 @@
 class Solution {
  public:
-  int totalFruit(vector<int>& tree) {
-    int ans = 0;
-    unordered_map<int, int> count;
-
-    for (int l = 0, r = 0; r < tree.size(); ++r) {
-      ++count[tree[r]];
-      while (count.size() > 2) {
-        if (--count[tree[l]] == 0)
-          count.erase(tree[l]);
-        ++l;
-      }
-      ans = max(ans, r - l + 1);
+  int totalFruit(vector<int>& fruits) {
+        int i=0,j=0;
+        int maxi=1;
+        unordered_map<int,int> mp;
+        while (j<fruits.size())
+        {
+            mp[fruits[j]]++;
+            while (mp.size()>2)
+            {
+                mp[fruits[i]]--;
+                if (mp[fruits[i]]==0)
+                    mp.erase(fruits[i]);
+                i++;
+            }
+            if (mp.size()<=2)
+                maxi=max(maxi,j-i+1);
+            j++;
+        }
+        return maxi;
     }
-
-    return ans;
-  }
 };
