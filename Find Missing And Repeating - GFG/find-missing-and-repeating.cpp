@@ -17,9 +17,7 @@ public:
                 int n1 = arr[i];
                 int n2 = arr[n1-1];
                 if(n1 == n2) break;
-                int t = arr[i];
-                arr[i] = arr[n1-1];
-                arr[n1-1] = t;
+                swap(arr[i], arr[n1-1]);
             }
             
         }
