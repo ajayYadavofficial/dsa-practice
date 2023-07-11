@@ -11,7 +11,6 @@ class Solution {
 public:
     
     unordered_map<TreeNode*, TreeNode*> mp;
-    
     void markParents(TreeNode* root){
         queue<TreeNode*> q;
         q.push(root);
