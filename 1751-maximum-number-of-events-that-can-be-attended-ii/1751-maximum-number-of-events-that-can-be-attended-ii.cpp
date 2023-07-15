@@ -15,8 +15,7 @@ public:
         // }
         
         vector<int> temp = { events[ind][1], INT_MAX, INT_MAX };
-        
-        i = upper_bound(events.begin(), events.end(), temp) - events.begin();
+        i = upper_bound(events.begin() + ind -1 , events.end(), temp) - events.begin();
         
         int take = events[ind][2] + solve( i , events, k-1 ,dp);
         return dp[{ind,k}] =  max(take, notTake);
