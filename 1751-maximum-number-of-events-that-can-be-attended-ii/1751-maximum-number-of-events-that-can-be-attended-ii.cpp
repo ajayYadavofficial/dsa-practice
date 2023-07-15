@@ -2,12 +2,12 @@ class Solution {
 public:
     
     
-    int solve( int ind,vector<vector<int>>& events, int k, map<pair<int,int>, int> &dp){
+    int solve( int ind,vector<vector<int>>& events, int k, vector<vector<int>> &dp){
         
         if( k == 0 || ind >= events.size() ) return 0;
         // not take
         
-        if(dp.find({ind,k}) != dp.end()) return dp[{ind,k}];
+        if(dp[ind][k] != -1 ) return dp[ind][k];
         int notTake = 0 + solve( ind+1, events, k, dp );
         int i;
         // for(i = ind+1; i < events.size(); i++){
@@ -18,7 +18,7 @@ public:
         i = upper_bound(events.begin() + ind -1 , events.end(), temp) - events.begin();
         
         int take = events[ind][2] + solve( i , events, k-1 ,dp);
-        return dp[{ind,k}] =  max(take, notTake);
+        return dp[ind][k] =  max(take, notTake);
         
     }
     
@@ -48,8 +48,9 @@ public:
     
     int maxValue(vector<vector<int>>& events, int k) {
         sort(events.begin(), events.end());
-        map<pair<int,int>, int> dp;
-        
+        int n = events.size();
+        // map<pair<int,int>, int> dp;
+        vector<vector<int>> dp( n+1, vector<int>(k+1, -1) );
         // for(auto it : events){
         //     for(auto it1 : it){
         //         cout<<it1<<" ";
