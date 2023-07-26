@@ -3,7 +3,7 @@ public:
     int minSpeedOnTime(vector<int>& dist, double hour) {
         if (hour < dist.size() - 1) return -1;
         int l = 0;
-        int r = 10000000;
+        int r = 1e7+1;
         int m;
         int ans = -1;
         while (l <= r) {
@@ -22,10 +22,14 @@ public:
         double time = 0;
         int i = 0;
         while (time <= hour && i < dist.size() - 1) {
-            time += ceil(static_cast<double>(dist[i]) / speed);
+            double d = 1.0*dist[i];
+            time += ceil(1.0*(d / speed));
             i++;
         }
-        time += static_cast<double>(dist[dist.size() - 1]) / speed;
+                         
+        // seperately for the last index
+        double d = 1.0*dist[dist.size()-1];
+        time += 1.0*(d/ speed);
         return (time <= hour);
     }
 };
