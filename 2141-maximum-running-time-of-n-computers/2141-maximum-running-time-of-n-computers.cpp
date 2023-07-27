@@ -13,6 +13,7 @@ public:
             
             if(sum >= x){
                 sum -= x;
+                // remove 1 pc as we ran 1 pc to x minutes limit
                 n--;
             }
             if(n == 0) return 1;
