@@ -1,25 +1,27 @@
-class Solution {
+class Solution
+{
 public:
-    int n;
-    vector<vector<int>> dp;
-    int f(int i, int j, string& s){       
-        if (dp[i][j]!=-1) return dp[i][j];
-        if (i==j) return dp[i][j]=1;
-        int ans;
-        if (s[i]==s[j]||s[j-1]==s[j]) ans=f(i, j-1, s);
-        else if (s[i]==s[i+1]) ans=f(i+1, j, s);
-        else{
-            ans=f(i,j-1, s)+1;
-            for(int k=i+1; k<j; k++){
-                if(s[k]==s[j])
-                    ans=min(ans, f(i, k-1, s)+f(k, j-1, s));
-            }
+    int solveMem(string &s, int left, int right, vector<vector<int>> &dp)
+    {
+        if (left == right)
+            return 1;
+        if (dp[left][right] != -1)
+            return dp[left][right];
+        int ans = INT_MAX, tmp;
+        for (int k = left; k < right; k++)
+        {
+            tmp = solveMem(s, left, k, dp) + solveMem(s, k + 1, right, dp);
+            ans = min(ans, tmp);
         }
-        return dp[i][j]=ans;
+        if (s[left] == s[right])
+            ans--;
+        dp[left][right] = ans;
+        return ans;
     }
-    int strangePrinter(string s) {
-        n=s.size();
-        dp.assign(n, vector<int>(n, -1));
-        return f(0, n-1, s);
+    int strangePrinter(string s)
+    {
+        int len = s.size();
+        vector<vector<int>> dp(len, vector<int>(len, -1));
+        return solveMem(s, 0, len - 1, dp);
     }
 };
