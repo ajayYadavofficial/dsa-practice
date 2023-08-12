@@ -1,34 +1,32 @@
 class Solution {
 public:
-    int change(int value, vector<int>& a) {
-        
-        vector<int> prev(value+1, 0), cur(value+1, 0);
-        
-        for(int T=0; T<=value; T++){
-//         dp[0][T] = (T%a[0] == 0);
-        prev[T] = (T%a[0] == 0);
-    }
     
-    for(int ind = 1; ind <a.size();ind++){
-        for(int T = 0; T<= value; T++){
-//          long notTake = dp[ind - 1][T];
-            long notTake = prev[T];
+    int dp[301][5002];
     
-            long take = 0;
-            if(a[ind] <= T){
-//              take = dp[ind][T-a[ind]];
-                take = cur[T-a[ind]];
-            }
-//          dp[ind][T] = take + notTake;
-            cur[T] = take + notTake;
+    // ind,target
+    
+    int solve( int ind, int target, int n,vector<int>& coins  ){
+        
+        if( ind >= n){
+            return target == 0;
         }
-        //empty
-        prev = cur;
+        
+        if(dp[ind][target] != -1) return dp[ind][target];
+        
+        int notTake = solve(ind+1,target, n, coins);
+        int take = 0;
+        
+        if(coins[ind] <= target) take = solve(ind, target-coins[ind], n, coins);
+        
+        return dp[ind][target] = take + notTake;
+        
     }
     
-//  return dp[n-1][value];
-    return prev[value];
-    
+    int change(int amount, vector<int>& coins) {
         
+        memset(dp,-1, sizeof(dp));
+        int n = coins.size();
+        
+        return solve(0,amount,n,coins);
     }
 };
