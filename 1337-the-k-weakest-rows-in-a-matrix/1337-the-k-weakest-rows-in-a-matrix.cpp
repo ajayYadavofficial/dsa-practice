@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
-        set <pair<int,int>> st; // node,no. of one's in that row
+        set <pair<int,int>> st; // <no. of one's in that row, node>
         
         for(int i=0; i< mat.size(); i++){
             int cnt = 0;
