@@ -4,7 +4,7 @@ using namespace std;
 class Solution {
 public:
     int numWays(int steps, int arrLen) {
-        int mod = 1000000007;
+        int mod = 1e9+7;
         int maxPosition = min(steps / 2, arrLen - 1);
         vector<vector<long long>> dp(steps + 1, vector<long long>(maxPosition + 1, 0));
         
