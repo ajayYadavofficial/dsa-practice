@@ -16,15 +16,9 @@
 class Solution {
 public:
     int maxLengthBetweenEqualCharacters(string s) {
-        int ans = -1;
-        for (int left = 0; left < s.size(); left++) {
-            for (int right = left + 1; right < s.size(); right++) {
-                if (s[left] == s[right]) {
-                    ans = max(ans, right - left - 1);
-                }
-            }
-        }
-        
-        return ans;
-    }
+    int last[26] = {0}, ans = -1;
+    for(int i = 0; i < s.size(); ++i) last[s[i] - 'a'] = i;
+    for(int i = 0; i < s.size(); ++i) ans = max(ans, last[s[i] - 'a'] - i - 1);
+    return ans;
+}
 };
