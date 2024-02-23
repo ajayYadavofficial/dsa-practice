@@ -15,7 +15,7 @@ public:
         vector<int> dist(n,1e9);
         dist[src] = 0;
         queue<pair<int , pair<int,int> >> Q;
-        //queue of pair of {stops, node, distance}
+        //queue of pair of {stops, {node, distance}}
         //allowed stops = k+1;
         Q.push({0, {src,0}} );
         
